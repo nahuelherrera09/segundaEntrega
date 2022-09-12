@@ -45,6 +45,7 @@ class Contenedor{
                 const idObj =  await contenidoArchivo.find(e => e.id === id )
                 if(idObj == undefined){
                     console.log(null)
+                    //return null
                 }else{
                     console.log(idObj);
                 }
@@ -53,10 +54,15 @@ class Contenedor{
 
 
     async getAll(){
-        const contenidoArchivo =  await this.#leerArchivo()
-        console.log(contenidoArchivo)
-
-
+        try{
+            const content = await this.#leerArchivo()
+            if(content.length){
+                return content
+            }else{return null}
+        }catch(err){
+            console.log(err)    
+        }
+        
     }
     async deleteById(id){
         const contenidoArchivo =  await this.#leerArchivo()
@@ -75,14 +81,29 @@ class Contenedor{
         await fs.promises.writeFile(this.rutaArchivo,JSON.stringify(contenidoArchivo),'utf-8')
         // console.log(contenidoArchivo)
     }
+
+    async getProductRamdom(){
+        try {
+            let data = await this.#leerArchivo(this.rutaArchivo)
+            let random = Math.floor(Math.random() * data.length)
+            console.log(data[random])
+        } catch (error) {
+            console.log(error)
+        }
+    } 
+
 }
 
-
+module.exports = {Contenedor}
 const container = new Contenedor('./product.txt');
 
+container.getAll()
 
 
-container.save({name:'producto17', price: 100 });
+container.getProductRamdom()
+
+
+// container.save({name:'producto17', price: 100 });
 
 // container.getAll();
 

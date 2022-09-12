@@ -1,0 +1,24 @@
+{
+  "name": "segundaentrega",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nahuelherrera09/segundaEntrega.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nahuelherrera09/segundaEntrega/issues"
+  },
+  "homepage": "https://github.com/nahuelherrera09/segundaEntrega#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
