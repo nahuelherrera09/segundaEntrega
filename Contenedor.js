@@ -82,11 +82,11 @@ class Contenedor{
         // console.log(contenidoArchivo)
     }
 
-    async getProductRamdom(){
+    async getProductRandom(){
         try {
             let data = await this.#leerArchivo(this.rutaArchivo)
             let random = Math.floor(Math.random() * data.length)
-            console.log(data[random])
+            return data[random]
         } catch (error) {
             console.log(error)
         }
@@ -100,7 +100,7 @@ const container = new Contenedor('./product.txt');
 container.getAll()
 
 
-container.getProductRamdom()
+container.getProductRandom()
 
 
 // container.save({name:'producto17', price: 100 });
